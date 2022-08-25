@@ -1,0 +1,182 @@
+<html>
+    <style>
+            .bn input[type="submit"]{
+    margin: 10px 50px 10px 50px;
+	padding: 5px 20px 5px 20px;
+    background-color: #0eb9f1;
+    color:white;
+	font-size: 100%;
+    position: relative;
+}
+    </style>
+    <head>
+        <title>Search item result</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+            
+    </head>
+    <!-- <body onload='highlight_function()'> -->
+        
+        {% if key %}
+        <body onload='highlight_function()'>
+        <h1>Search Results:keyword "{{key}}"</h1>
+        {% endif %}
+        
+        {% if miles %}
+        <body>
+        <h1>Search Results:Within {{miles}} miles of me</h1>
+        {% endif %}
+
+        {% if postal_code%}
+        <body>
+        <h1>Search Results:By postal code {{postal_code}}</h1>
+        {% endif %}
+
+        {%if my_postal_code%}
+        <h1>Search Results:By my postal code {{my_postal_code}}</h1>
+        {% endif %}
+
+    <table id="table"  >
+        <thead>
+            <tr>
+                <!-- <th>highlight</th> -->
+                <th>Item #</th>
+                <th>Game type</th>
+                <th>Title</th>
+                <th>Condition</th>
+                <th>Description</th>
+                <th>Distance</th>
+                <th>detail</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+                {%for i in range(0,len)%}
+                {% if key %}
+                <div style="display:none;" class="highlight" name="highlight" id="highlight" value="highlight">{{highlight[i]}}</div>
+                {% endif %}
+                <tr>
+                    <!-- <td><div style="display:none;" name="highlight" id="highlight" value="highlight">highlight[i]</div></td> -->
+                    
+                    <td>{{r[i][0]}}</td>
+                    <td>{{r[i][4]}}</td>
+                    <td><div class="title">{{r[i][1]}}</div></td>
+                    <td>{{r[i][2]}}</td>
+                    <td><div class="description">{{r[i][3]}}</div></td>
+                    {% if key%}
+                    <td>{{r[i][10]}}</td>
+                    {% endif %}
+
+                    {% if miles%}
+                    <td>{{r[i][10]}}</td>
+                    {% endif %}
+
+                    {% if postal_code%}
+                    <td>{{r[i][11]}}</td>
+                    {% endif %}
+
+                    {% if my_postal_code%}
+                    <td>{{r[i][10]}}</td>
+                    {% endif %}
+                    <!-- <td><form action="/result" method=post>
+                        <input name ='detail' value="{{r[i][0]}}" type="hidden">
+                        <button type="submit">detail</button> -->
+                        <td><form action="/view_item" method=post>
+                            <input name ='detail' value="{{r[i][0]}}" type="hidden">
+                            <button type="submit">detail</button>
+                    </form></td>
+                </tr>
+                {%endfor%}
+             
+           
+        </tbody>   
+            
+            
+            
+
+        </table>
+        <div class="bn">
+        <a href="http://127.0.0.1:5000/search">
+            <input type="submit" name= "search" value="Search Again"></a>
+        </div>
+        
+    </body>
+    <script type='text/javascript'>
+        function highlight_function(){
+            // var table = document.getElementById("table");
+            // console.log(table);
+            // const a=document.getElementsByClassName('highlight')[0].innerText
+            // const b=document.getElementsByClassName('highlight').innerText[1]
+            // const c=document.getElementsByClassName('highlight').innerText[2]
+            var rowcount=document.getElementById("table").rows.length;
+            for (var i=0; i<rowcount;i++)
+            {
+             const a=document.getElementsByClassName('highlight')[i].innerText
+             console.log(a)
+             if (a==1)
+             {
+                var title = document.getElementsByClassName("title")[i]
+                title.style['background-color']="lightblue";
+                title.style.display = "";
+                
+             }
+             if (a==0)
+             {
+                var description = document.getElementsByClassName("description")[i]
+                description.style['background-color']="lightblue";
+                description.style.display = "";
+                
+             }
+             
+            }
+            // console.log(b)
+            // console.log(c)
+        
+        }
+            
+    </script>
+    // <!-- <script type='text/javascript'>
+    //     function highlight_function(){
+    //         var table = document.getElementById("table");
+    //         console.log(table)
+ 	// //iterate trough rows
+    //         for (var i = 0, row; row = table.rows[i]; i++) {
+ 	// //iterate trough columns
+    //             var highlight(i)=document.getElementById("highlight")
+    //             var result=highlight.innerText
+    //             console.log(result)
+    //     }
+    // }
+            // var highlight = document.getElementsByTagName("highlight");
+            // hightlight.style['background-color']="red";
+            // highlight.style.display = "";
+            // };
+            // var table = document.getElementById("table");
+            // var highlight= document.getElementById("highlight")
+            // console.log(highlight)
+            // for (let i in table.rows)
+            // {
+            //     let row = table.rows[i]
+            //     console.log(row)
+            // }
+            
+            // var highlight = document.getElementsByTagName("highlight");
+            // var title=document.getElementsByClassName("title");
+            // for (var i=1;i<highlight.length;i++){
+            //     highlight.style['background-color']="red";
+            //     highlight.style.display = "";
+                
+                
+            
+        
+
+    </script> -->
+
+    <!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js">
+        // $(document).ready(function(){
+        //     myObj = {firstname:"John", lastname:"Doe"};
+        //     console.log(myObj);
+        // });
+        var myObj = {firstname:"John", lastname:"Doe"};
+            console.log(myObj);
+    </script> -->
+</html>

@@ -1,0 +1,97 @@
+@charset "utf-8";
+/* CSS Document */
+.box{width:1200px; height:2000px; padding:0; margin: 0 auto;}
+.one{width:1200px; height:60px; border-bottom:#666 Solid 1px;}
+.one p{float:left;  padding-right: 480px;}
+.one .one_last{padding-right:0;}
+.two{width:1200px; height:540px; border:#666 Solid 1px;}
+.swap{width:560px; padding-left: 30px; float: left;}
+.details{border-bottom: rgb(176, 225, 240) solid 1px; padding-bottom: 10px;}
+.swap .date1{font-weight: normal; margin-left: 100px;} 
+.swap .date2{font-weight: normal; margin-left: 24px;} 
+.swap .date3{font-weight: normal; margin-left: 126px;} 
+.swap .date4{font-weight: normal; margin-left: 115px;} 
+.swap .date5{font-weight: normal; margin-left: 94px;} 
+.swap .dropdown-menu{font-size: normal; margin-left: 94px;}
+.dropdown-menu{
+    position:relative;
+    display: inline-block;
+    width: 80px;
+}
+.dropdown-menu:after {
+    content: '\25BC';
+    background-color: lightskyblue;
+    color: white;
+    right: 1px;
+    padding: 5px 10px 5px 10px;
+    position: absolute;
+    box-sizing: border-box;
+    background-size: 100px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: 1px solid #AAAAAA;
+    pointer-events: none;
+}
+
+/* IE11 hide native button (thanks Matt!) */
+select::-ms-expand {
+display: none;
+}
+.dropdown-menu select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* appearance: none;
+  display: block; */
+  width: 100%;
+  max-width: 320px;
+  height: 30px;
+  float: right;
+  margin: 0px;
+  padding: 0px 10px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #333;
+  background-color: #ffffff;
+  background-image: none;
+  border-radius: 5px;
+  border: 1px solid #AAAAAA;
+  -ms-word-break: normal;
+  word-break: normal;
+}
+
+.user{width:560px; padding-left: 30px; float: left;}
+.details1{border-bottom: rgb(176, 225, 240) solid 1px; padding-bottom: 10px;}
+.user .date1{font-weight: normal; margin-left: 40px;} 
+.user .date2{font-weight: normal; margin-left: 52px;} 
+.user .date3{font-weight: normal; margin-left: 76px;} 
+.user .date4{font-weight: normal; margin-left: 80px;} 
+.user .date5{font-weight: normal; margin-left: 72px;} 
+.proposed{width:560px; padding-left: 30px; float: left;}
+.details2{border-bottom: rgb(176, 225, 240) solid 1px; padding-bottom: 10px;}
+.proposed .date1{font-weight: normal; margin-left: 60px;} 
+.proposed .date2{font-weight: normal; margin-left: 70px;} 
+.proposed .date3{font-weight: normal; margin-left: 20px;} 
+.proposed .date4{font-weight: normal; margin-left: 28px;} 
+.proposed .date5{font-weight: normal; margin-left: 16px;} 
+.desired{width:560px; padding-left: 30px; float: left; }
+.details3{border-bottom: rgb(176, 225, 240) solid 1px; padding-bottom: 10px;}
+.desired .date1{font-weight: normal; margin-left: 60px;} 
+.desired .date2{font-weight: normal; margin-left: 70px;} 
+.desired .date3{font-weight: normal; margin-left: 20px;} 
+.desired .date4{font-weight: normal; margin-left: 28px;} 
+.desired .date5{font-weight: normal; margin-left: 16px;} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>swap_detail</title>
+<link href="../static/swap_detail.css" rel="stylesheet"></head>
+<body>
+	<div class="two">
+		<div class="swap">
+			<p class="details">Swap Details</p>
+			{% for item in swap_detail %}
+			<p><b>Proposed</b><b class="date1">{{ item [0]}} </b></p>
+			<p><b>Accepted/Rejected</b><b class="date2">{{ item [1]}}</b></p>
+			<p><b>Status</b><b class="date3">{{ item [2]}}</b></p>
+			<p><b>My role</b><b class="date4">{{ item [3]}}</b></p>
+			<!-- <p><b>Rating left</b><b class="date5">{{ item [4]}}</b></p> -->
+			{% if item[4] == None and  item [2] == 'Accepted'%}
+				<form name="rate" method = post id = "rate_form" action = "/swap_detail_rate">
+				<b>Rating left</b>
+					<span class = "dropdown-menu"><select  id = 'button_rate' name="button_rate" onchange = "vali()" >
+						<option style="display: none"></option>
+						<option value = 0>0</option>
+						<option value = 1>1</option>
+						<option value = 2>2</option>
+						<option value = 3>3</option>
+						<option value = 4>4</option>
+						<option value = 5>5</option>
+					</select></span>
+					<input id="rated_dealID" name='rated_dealID' type="hidden"/>
+					<input id="rated_dealID_rating" name="rated_dealID_rating" type="hidden"/> 
+				</form>
+			{% else %}
+				<p><b>Rating left</b><b class = "date5">{{ item [4]}}</b></p>
+			{%endif%}
+			{% endfor %}
+		</div>
+		<div class="user">
+			<p class="details1">User details</p>
+			{% for item in user_detail %}
+			<p><b>Nickname</b><b class="date1">{{ item [0]}}</b></p>
+			<p><b>Distance</b><b class="date2">{{ item [1]}}</b></p>
+			<p><b>Name</b><b class="date3">{{ item [2]}}</b></p>
+			<p><b>Email</b><b class="date4">{{ item [3]}}</b></p>
+			<p><b>Phone</b><b class="date5">{{ item [4]}}</b></p>
+			{%  endfor %}
+		</div>
+	    <div class="proposed">
+			{% for item in proposed_item %}
+			<p class="details2">Proposed Item</p>
+			<p><b>Item#</b><b class="date1">{{ item [0]}}</b></p>
+			<p><b>Title</b><b class="date2">{{ item [1]}}</b></p>
+			<p><b>Game type</b><b class="date3">{{ item [2]}}</b></p>
+			{% if item [5] %}
+			<p><b>Media</b><b class="date1">{{ item [5]}}</b></p>
+			{% endif %}
+			{% if item [6] %}
+			<p><b>Piece Count</b><b class="date3">{{ item [6]}}</b></p>
+			{% endif %}
+			{% if item [7] %}
+			<p><b>Platform</b><b class="date3">{{ item [7]}}</b></p>
+			{% endif %}
+			<p><b>Condition</b><b class="date4">{{ item [3]}}</b></p>
+			{% if item [4] %}
+			<p><b>Description</b><b class="date5">{{ item [4]}}</b></p>
+			{% endif %}
+			{%  endfor %}
+		</div>
+		<div class="desired">
+			{% for item in desired_item %}
+			<p class="details3">Desired Item</p>
+			<p><b>Item#</b><b class="date1">{{ item [0]}}</b></p>
+			<p><b>Title</b><b class="date2">{{ item [1]}}</b></p>
+			<p><b>Game type</b><b class="date3">{{ item [2]}}</b></p>
+			{% if item [5] %}
+			<p><b>Media</b><b class="date1">{{ item [5]}}</b></p>
+			{% endif %}
+			{% if item [6] %}
+			<p><b>Piece Count</b><b class="date3">{{ item [6]}}</b></p>
+			{% endif %}
+			{% if item [7] %}
+			<p><b>Platform</b><b class="date3">{{ item [7]}}</b></p>
+			{% endif %}
+			<p><b>Condition</b><b class="date4">{{ item [3]}}</b></p>
+			{% if item [4] %}
+			<p><b>Description</b><b class="date5">{{ item [4]}}</b></p>
+			{% endif %}
+			{%  endfor %}
+		</div>
+	</div>
+	<a href="http://127.0.0.1:5000/main_menu"> 
+		<input type="submit" name="return_to_main_menu" value="Main Menu" id="Return"/></a>
+</div>
+	</div>
+</div>
+
+<script type='text/javascript'>
+	function get_detail_dealID(){
+		
+	}
+	function vali() {
+		var value = document.getElementById('button_rate');
+		// alert("rate!")
+
+		var rated_dealID_rating=document.getElementById('rated_dealID_rating');
+		rated_dealID_rating.value= value.value
+		document.forms["rate"].submit();
+		// alert(rated_dealID_rating.value)
+			}
+</script> 
+</body>
+</html>

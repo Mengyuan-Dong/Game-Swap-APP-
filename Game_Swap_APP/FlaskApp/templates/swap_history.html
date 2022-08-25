@@ -1,0 +1,169 @@
+<!--Yating - Accept/Reject Table and Swap History (Project Description Pg 12)-->
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<html>
+<body>
+    <head>
+        <title>Swap History</title>
+        <link rel="stylesheet" type="text/css" href="../static/swap_history_style.css">
+         <style>
+          table, td, th {
+          border: 1px solid black;
+          border-collapse: collapse;
+          text-align: center;
+          }
+</style>
+    </head>
+
+    <div class="swap_history">
+
+        <h1>Swap History</h1>
+            <br>
+
+    </div>
+        <div class="table1">
+            <hr style="width:110%; text-align:left; margin-left:0; border-color:#0eb9f1">
+        <table>
+            <thead>
+                <tr>
+                    <th>My Role</th>
+                    <th>Total</th>
+                    <th>Accepted</th>
+                    <th>Rejected</th>
+                    <th>Rejected %</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for i in range(0,len)%}
+                <tr>
+                <td>{{r[i][0]}}</td>
+                <td>{{r[i][1]}}</td>
+                <td>{{r[i][2]}}</td>
+                <td>{{r[i][3]}}</td>
+                <td class="rej_ptg">{{r[i][4]}}</td>
+                </tr>
+                {%endfor%}
+           </tbody>
+        </table>
+       
+			<br>
+    	</div>
+
+<script type='text/javascript'>
+    var rej_ptg = document.getElementsByClassName("rej_ptg");
+    for (let i = 0; i < rej_ptg.length; i++) {
+         console.log(rej_ptg[i].innerHTML);
+         if (rej_ptg[i].innerHTML >= 50) {
+            rej_ptg[i].style['background-color']="#ff0000";
+         };
+         rej_ptg[i].innerHTML = rej_ptg[i].innerHTML +'%'
+    }
+
+</script>
+
+
+        <div class="table2">
+         <table>
+            <thead>
+                <tr>
+                    <th>Proposed Date</th>
+                    <th>Accepted/Rejected Date</th>
+                    <th>Swap Status</th>
+                    <th>My Role</th>
+                    <th>Proposed Item</th>
+                    <th>Desired Item</th>
+                    <th>Other User</th>
+                    <th>Rating</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for i in range(0,len_s)%}
+                <tr id="{{ s[i][0] }}">
+                <td>{{s[i][1]}}</td>
+                <td>{{s[i][2]}}</td>
+                <td>{{s[i][3]}}</td>
+                <td>{{s[i][4]}}</td>
+                <td>{{s[i][5]}}</td>
+                <td>{{s[i][6]}}</td>
+                <td>{{s[i][7]}}</td>
+                {% if s[i][3] == 'Rejected'%}
+                <td> </td>
+                {% elif s[i][8] == 0 %}
+                <td>{{s[i][8]}}</td>
+                {% elif s[i][8] %}
+                <td>{{s[i][8]}}</td>
+                {% else %}
+                <td>
+                    <form action="/swap_history" method="POST">
+                      <select id="rate_history_{{ i }}" name="rate_history_{{ i }}" onchange="submitRateAndType('{{i}}')">
+                          <option value='-1'></option>
+                          <option value='0'>0</option>
+                          <option value='1'>1</option>
+                          <option value='2'>2</option>
+                          <option value='3'>3</option>
+                          <option value='4'>4</option>
+                          <option value='5'>5</option>
+                      </select>
+                    </form>
+                </td>
+                {% endif %}
+                <td>
+                    <form action="/swap_detail" method=post>
+                        <input name='dealID' value="{{s[i][0]}}" type="hidden">
+                        <button type="submit" class="link-button">detail</button>
+                    </form>
+                </td>
+                </tr>
+                {%endfor%}
+           </tbody>
+        </table>
+			<br>
+    <p id="demo"></p>
+    </div>
+    
+     <br>
+
+<script>
+function submitRateAndType(i) {
+    console.log(i);
+    const selectedRate = document.getElementById("rate_history_" + i);
+	var rate = selectedRate.value;
+	var selectedRow = selectedRate.parentNode.parentNode.parentNode;
+    var myRole = selectedRow.cells[3].innerHTML;
+    var dealId = selectedRow.id;
+    var formElement = selectedRow.cells[7].children[0];
+// console.log(formElement);
+
+    let rateInput = document.createElement("input");
+    rateInput.type = "hidden";
+    rateInput.value = rate;
+    rateInput.name = "rate";
+
+    let dealIdInput = document.createElement("input");
+    dealIdInput.type = "hidden";
+    dealIdInput.value = dealId;
+    dealIdInput.name = "deal_id";
+
+    let myRoleInput = document.createElement("input");
+    myRoleInput.type = "hidden";
+    myRoleInput.value = myRole;
+    myRoleInput.name = "my_role";
+
+    formElement.appendChild(rateInput);
+    formElement.appendChild(dealIdInput);
+    formElement.appendChild(myRoleInput);
+
+    formElement.submit();
+
+// const newNode = document.createTextNode(rate);
+// formElement.parentNode.replaceChild(newNode, formElement);
+    document.getElementById("demo").innerHTML = "You selected: " + rate +
+    " " + myRole + " " + dealId + " " + formElement;
+
+}
+</script>
+
+</body>
+</html>

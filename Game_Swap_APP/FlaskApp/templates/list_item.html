@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* form {
+            left:400px;
+	text-align: center;
+}
+
+input[id="description"]{
+    height:100px;
+    font-size:14pt;
+} */
+.all {
+    top: -50px; 
+    left: 600px;
+	margin-top: 100px; 
+	margin-bottom: 0;
+	color: #000502;
+	font-size: 110%;
+	position: absolute;
+
+}
+.bn input[type="submit"]{
+    margin: 10px 50px 10px 50px;
+	padding: 5px 20px 5px 20px;
+    background-color: lightblue;
+    color:white;
+	font-size: 100%;
+    position: relative;
+}
+
+.alert{
+    padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+
+}
+
+
+
+    </style>
+    <meta charset="UTF-8">
+    <title>dropdown menu</title>
+    <script type="text/javascript">
+        function select(){
+            var selectid=document.getElementById("selectid").value;
+            if(selectid=="1"){
+                document.getElementById('piececount').innerHTML='<label>Piececount</label><br><input type="text" id="pieceinput" name="piececount">';
+            }
+            else if(selectid=="2"){
+                document.getElementById('piececount').innerHTML='<label>Platform</label><br><select id="platform" name="platform"><option value="Nintendo">Nintendo</option><option value="Playstation">Playstation</option><option value="Xbox">Xbox</option></select><br><label>Media</label><br><select id="media" name="media"><option value="optical disc">optical disc</option><option value="game card">game card</option><option value="cartridge">cartridge</option></select>';
+            }
+            else if(selectid=="3"){
+                document.getElementById('piececount').innerHTML='<br>';
+            }
+            else if(selectid=="4"){
+                document.getElementById('piececount').innerHTML='<br>';
+            }
+            else if(selectid=="5"){
+                document.getElementById('piececount').innerHTML='<label>Platform</label><br><select id="computerplatform" name="computerplatform"><option value="Linux">Linux</option><option value="macOS">macOS</option><option value="Windows">Windows</option></select><br>';
+            }
+            }
+        function msgbox(r)
+        {   var number=document.getElementById('item_number')
+            number.value=r    
+        alert("Your Item is listed Your Item number is "+number.value);
+
+            //window.reload();
+            // var text;
+            // var z=confirm("Insertion Successful")
+            // if (z==true){
+            //     text="Insert Again";
+            //     location.href="http://localhost:5000/main_menu"
+            // }
+            // else {
+            //     "Go Back To Main Menu"
+            //     location.href= "http://localhost:5000/main_menu"
+            // }
+            window.location.herf = "http://127.0.0.1:5000/main_menu"
+
+        }
+
+    </script>
+</head>
+<body id="body">
+    <div style="display:none;" id="item_number" >r</div>
+    <div class="all">
+<form action="/list_item" method=post>
+    <h3>New Item Listing</h3>
+    <hr>
+    <label> Game Type</label>
+    <br>
+    <select id="selectid" name="selectid" onchange="select()">
+        <option value="1">puzzle</option>
+        <option value="2">video game</option>
+        <option value="3">board game</option>
+        <option value="4">card game</option>
+        <option value="5">computer game</option>
+    </select>
+<br>
+<label> Title</label>
+<br>
+<input type="text" id="title" name="title">
+<br>
+<label>Condition</label>
+<br>
+<select id="condition" name="condition">
+    <option value="Mint">Mint</option>
+    <option value="like New">Like New</option>
+    <option value="Lightly Used">Lightly Used</option>
+    <option value="Moderately Used">Moderately Used</option>
+    <option value="Heavily Used">Heavily Used</option>
+    <option value="Damaged/Missing parts">Damaged/Missing parts</option>
+</select>
+<div id="piececount"><label>Piececount</label><br><input type="text" id="pieceinput" name="piececount"></div>
+<br>
+<label>Description</label>
+<br>
+<input type="text" id="description" name="description">
+<br>
+<br>
+<div id="confirm"></div>
+<!-- <div class="bn"><input type="submit" id="bn" onclick="msgbox()"value="list item"/> </div> -->
+<div class="bn"><input type="submit" id="bn" value="list item"/> </div>
+</div>
+
+<!-- <div class="back">
+<a href="http://localhost:5000/main_menu"> 
+    <input type="submit" id="back" name="back" value="back to main menu"></a>
+</div> -->
+
+</div>
+</form>
+</body>
+</html>

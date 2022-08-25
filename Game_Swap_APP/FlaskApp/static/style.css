@@ -1,0 +1,28 @@
+h1 {color:red}
+table{
+    width:1000px;
+}
+th,td {
+	text-align: left;
+    padding: 12px 15px;
+    
+}
+
+table, th,td{
+    border:1px solid #000;
+    border-collapse: collapse;
+    border-bottom: 1px solid #000;
+    border-top: thin solid;
+    border-bottom: thin solid;
+}
+
+tbody,tr,td {
+border-bottom: 1px solid #000;
+border-top: thin solid;
+border-bottom: thin solid;
+} 
+/* td{
+    padding: 1rem 2rem;
+} */
+/* th,td{border:1px solid #000;
+    border-collapse: collapse;} */

@@ -1,0 +1,55 @@
+<html>
+    <head><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script></head>
+    <style>
+        .all {
+    top: -50px; 
+    left: 500px;
+	margin-top: 100px; 
+	margin-bottom: 0;
+	color: #000502;
+	font-size: 125%;
+	position: absolute;
+
+}
+    .bn input[type="submit"]{
+    margin: 10px 50px 10px 50px;
+	padding: 5px 20px 5px 20px;
+    background-color: #0eb9f1;
+    color:white;
+	font-size: 100%;
+    position: relative;
+}
+
+    .return input[type="submit"]{
+    margin: 10px 50px 10px 50px;
+	padding: 5px 20px 5px 20px;
+    background-color: #0eb9f1;
+    color:white;
+	font-size: 100%;
+    position: relative;
+}
+
+    </style>
+    <body>
+        <div class="all">
+            <h1>Search</h1>
+            <hr>  
+            <form action="/search" method=post>
+                <input type="radio" name="search" value="1" id="keyword"  />By keyword:<input type="search" id="input_keyword"name="search_keyword" value="{{request.form.search_keyword}}"></br>
+                <input type="radio" name="search" value="2" id="in_my_postal_code"/>In my postal code<br>
+                <input type="radio" name="search" value="3" id="within"/>Within<input type="number" size="3" name="search_miles" value="{{request.form.search_miles}}"> miles of me<br>
+                <input type="radio" name="search" value="4" id="in_postal_code"/>In postal code:<input type="search" name="search_postalcode" value="{{request.form.search_postalcode}}"><br>
+                <div class="bn">
+                    <input type="submit" id="bn" value="Search"/> 
+                    <br>
+                </div>
+                <h3 >{{info}}</h3>
+            </form>
+            <div class="return">
+                <a href="http://127.0.0.1:5000/main_menu">
+                    <input type="submit" name= "main_menu" value="Main Menu"></a>
+            </div>
+        </div>
+        
+    </body>
+</html>

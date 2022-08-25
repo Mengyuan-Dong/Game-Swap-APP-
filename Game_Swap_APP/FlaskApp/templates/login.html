@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Welcome to GameSwap</title>
+	<link rel="stylesheet" type="text/css" href="../static/register_style.css">
+</head>
+<body>
+    <div class="login_box">
+        <div class="login_header">
+                <h1>GameSwap!</h1>
+                <br>
+                Login below
+            
+                <form action="/login" method="post">
+                    <h2></h2>Email or Phone #<br>
+                    <input type="text" placeholder = "Email or Phone #" size="25" name='email_or_phone'><br>
+                    Password<br>
+                    <input  type="password" name='password' size="25" placeholder = "Password"><br><br>
+                  <input type="submit" value="Login">
+                  </form>
+                  <br>
+                  New User
+                  <br>
+                  <a href="http://127.0.0.1:5000/registration">
+                  <input type="submit" value="Register"></a>
+
+                  <h3 >{{info}}</h3>
+                  <!-- display the flash error message -->
+                  {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                     {% for message in messages %}
+                        <p>{{ message }}</p>
+                     {% endfor %}
+                  {% endif %}
+               {% endwith %}
+              
+        </div>
+       
+    </div> 
+</body>
+</html>

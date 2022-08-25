@@ -1,0 +1,63 @@
+
+html {
+	height: 50%;
+	min-height:50%;
+    border:#666 Solid 1px;
+} 
+.rate_swap{border-bottom: #eee solid 1px; padding-bottom: 10px; font-size: large;}
+hr{
+	margin-left:0;
+}
+.dropdown-menu{
+    position:relative;
+    display: inline-block;
+    width: 80px;
+}
+
+.dropdown-menu:after {
+    content: '\25BC';
+    background-color: lightskyblue;
+    color: white;
+    right: 1px;
+    padding: 4px 10px 4px 10px;
+    position: absolute;
+    box-sizing: border-box;
+    background-size: 100px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: 1px solid #AAAAAA;
+    pointer-events: none;
+}
+
+/* IE11 hide native button (thanks Matt!) */
+select::-ms-expand {
+display: none;
+}
+
+.dropdown-menu select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* appearance: none;
+  display: block; */
+  width: 100%;
+  max-width: 320px;
+  height: 30px;
+  float: right;
+  margin: 0px;
+  padding: 0px 10px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #333;
+  background-color: #ffffff;
+  background-image: none;
+  border-radius: 5px;
+  border: 1px solid #AAAAAA;
+  -ms-word-break: normal;
+  word-break: normal;
+}
+.dropdown-menu option{
+    color:black;
+    padding: 12px 16px;
+    text-decoration:none;
+    display:block;
+}

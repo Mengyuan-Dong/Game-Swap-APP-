@@ -1,0 +1,153 @@
+<!--Yating - View Item Details (Project Description Pg 9)-->
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<html>
+<body>
+    <head>
+        <title>View Item</title>
+        <link rel="stylesheet" type="text/css" href="../static/view_item_style.css">
+    </head>
+
+    <div class="item_details">
+
+        <h1>Item Details</h1>
+            <br>
+
+    </div>
+
+        <div class="left">
+        <table>
+        <tbody>
+        <tr>
+        <td><b>Item #</b></td><td>{{ item_number }}</td>
+        </tr>
+        <tr>
+        <td><b>Title</b></td><td>{{ title }}</td>
+        </tr>
+        <tr>
+        <td><b>Game Type</b></td><td>{{ game_type }}</td>
+        </tr>
+        {% if name %}
+        <tr>
+        <td><b>Name</b></td><td>{{ name }}</td>
+        </tr>
+        {% endif %}
+        {% if piece_count %}
+        <tr>
+        <td><b>Piece Count</b></td><td>{{ piece_count }}</td>
+        </tr>
+        {% endif %}
+        {% if platform %}
+        <tr>
+        <td><b>Platform</b></td><td>{{ platform }}</td>
+        </tr>
+        {% endif %}
+        {% if media %}
+        <tr>
+        <td><b>Media</b></td><td>{{ media }}</td>
+        </tr>
+        {% endif %}
+        <tr>
+        <td><b>Condition</b></td><td>{{ condition }}</td>
+        </tr>
+        {% if description %}
+        <tr>
+        <td><b>description</b></td><td>{{ description }}</td>
+        </tr>
+        {% endif %}
+        </tbody>
+        </table>
+			<br>
+
+        </div>
+
+        </div>
+        <div class="right">
+        <table>
+        {% if nickname %}
+        <tbody>
+        <tr>
+        <td><b>Offered By</b></td><td><b>{{ nickname }}<b></td>
+        </tr>
+        <tr>
+        <td>Location</td><td>{{ location }}</td>
+        </tr>
+        <tr>
+        <td>Rating</td><td>{{ rating }}</td>
+        </tr>
+        <tr class="distance">
+        <td>Distance</td><td>{{ distance }}</td>
+        </tr>
+        </tbody>
+        {% endif %}
+        </table>
+			<br>
+
+        </div>
+        
+        <div class="button">
+            <!-- <form action="/propose_swap" method=post>
+                <input name ='desired_item' value="{{item_number}}" type="hidden">
+                <input name ='distance' value="{{distance}}" type="hidden">
+                <input name ='title' value="{{title}}" type="hidden"> -->
+                <a href="http://127.0.0.1:5000/propose_swap"> 
+                <input type="submit" name="propose_swap_button" value="Propose swap" id="propose" /></a>
+        </div> 
+                <!-- onclick="get_desired_item_ID_distance('{{item_number}}','{{distance}}','{{ title }}')" -->
+        <!-- </form> -->
+        <div class="button_2">
+            <a href="http://127.0.0.1:5000/main_menu">
+                <input type="submit" name="return_to_main_menu" value="Main Menu" id="Return"/></a>
+        </div>       
+
+<script type='text/javascript'>
+    /*javascript to change the background color based on distance value*/
+    var distance = document.getElementsByClassName("distance");
+    for (let i = 0; i < distance.length; i++) {
+        if (distance[i].cells[1].innerHTML >= 0 && distance[i].cells[1].innerHTML < 25) {
+            distance[i].style['background-color']="green";
+        };
+        if (distance[i].cells[1].innerHTML >= 25 && distance[i].cells[1].innerHTML < 50) {
+            distance[i].style['background-color']="yellow";
+        };
+        if (distance[i].cells[1].innerHTML >= 50 && distance[i].cells[1].innerHTML < 100) {
+            distance[i].style['background-color']="orange";
+        };
+        if (distance[i].cells[1].innerHTML >= 100) {
+            distance[i].style['background-color']="red";
+        };
+    }
+
+
+    /* javascript for propose button, hide the button if:
+    1. current user has >2 unrated swaps,
+    2. or >5 unaccepted swaps,
+    3. or if this is the user's own item
+    4. or if this item is already in a pending/accepted swap */
+
+    var unrated_swaps = '{{ unrated_swaps }}';
+    var unaccepted_swaps ='{{ unaccepted_swaps }}';
+    var item_owner = '{{ item_owner }}';
+    var user_email = '{{ user_email }}';
+    var available = '{{ available }}';
+
+    if(unrated_swaps > 2 || unaccepted_swaps > 5 || user_email == item_owner || available == 0 ) {
+        document.getElementById("propose").style.display = "None";
+    }
+    // if(user_email == item_owner) {
+    //     alert("here")
+    //   document.getElementByName("propose_swap_button").style.display = "none";
+    // }
+    // if(available == 0) {
+    //   document.getElementById("propose").style.display = "none";
+    // }
+    else {
+      document.getElementById("propose").style.display = "";
+    };
+
+</script>
+
+
+</body>
+</html>

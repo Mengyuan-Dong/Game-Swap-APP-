@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> -->
+
+    <title>User Registration</title>
+    <link rel="stylesheet" type="text/css" href="../static/registration_style.css">
+        
+</head>
+
+
+<body>
+    <h1>Registration</h1>  
+    <br>
+<form action="/registration" method="POST">
+        Email <input type="text" name="inputemail" value="" />
+        Nickname <input type="text" name="inputnickname" value="" /><br />
+        Password <input type="password" name="inputpassword"/>      
+        City <input type="text" name="inputcity" value="" /><br />
+        First Name <input type="text" name="inputfirstname" value="" />
+        State <input type="text" name="inputstate" value="" /><br />
+        Last Name <input type="text" name="inputlastname" value="" />
+        Postal Code <input type="text" name="inputpostalcode" value="" /><br />
+
+        Phone number (optional) <input type="text" name="inputphonenumber" value="" /> 
+        <select name="inputphonetype">
+            <option>Home</option>
+            <option>Work</option>
+            <option>Mobile</option>
+        </select>
+        <br />
+
+        <input type="checkbox" name="inputisshareable" value="1" />Show phone number in swaps<br />
+        <input type="submit" value="Register" /><br />
+    </form>
+    <h3 >{{info}}</h3>
+
+
+</body>
+
+
+</html>

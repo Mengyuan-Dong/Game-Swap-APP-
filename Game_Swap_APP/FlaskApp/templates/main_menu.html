@@ -1,0 +1,75 @@
+<html>
+<body>
+    <head>
+        <title>Main Menu</title>
+        <link rel="stylesheet" type="text/css" href="../static/main_menu_style.css">
+    </head>
+
+    <div class="user_welcome_message">
+
+
+        <h1>Main Menu</h1>
+            <br>
+            Welcome, {{first}} {{last}}!
+    </div>
+
+
+        <div class="right">
+            <br>
+            <a href="http://127.0.0.1:5000/list_item"> 
+                <input type="submit" name="list_item_button" value="List item"></a>
+            <br>
+            <a href="http://127.0.0.1:5000/my_item"> 
+                <input type="submit" name="my_items_button" value="My items"></a>
+            <br>
+            <a href="http://127.0.0.1:5000/search"> 
+                <input type="submit" name="search_items_button" value="Search items"></a>
+            <br>
+            <a href="http://127.0.0.1:5000/swap_history"> 
+                <input type="submit" name="swap_history_button" value="Swap history"></a>
+            <br>
+            <a href="http://127.0.0.1:5000/update_user_info"> 
+                <input type="submit" name="update_myinfo_button" value="Update my info"></a>
+            <br>
+
+        </div>
+        <div class="left column">
+            <h2>My rating</h2>
+            <br>
+                <input type="text" name="my_rating" value="{{my_rating}}" readonly>
+            <br>
+            <h2>Unaccepted swaps</h2>
+            <br>
+            <a href="http://127.0.0.1:5000/accept_reject_swaps"> 
+                <input type="submit" id="unaccepted_swaps" name="unaccepted_swaps" value="{{Unaccepted_swaps}}"></a>
+            <br>
+            <input type="hidden" id="more_than_5d" value ="{{more_than_5d}}" >
+
+            <h2>Unrated swaps</h2>
+            <br>
+            <a href="http://127.0.0.1:5000/rate_swap"> 
+                <input type="submit" id="unrated_swaps" name="unrated_swaps" value="{{Unrated_swaps}}"></a>
+			<br>
+        </div>
+        <div class="logout">
+            <a href="http://127.0.0.1:5000/logout">
+                <input type="submit" name="logout" value="Logout">
+            </a>
+        </div>
+        
+</body>
+    <script type='text/javascript'>  
+        var unaccepted_swaps = document.getElementById("unaccepted_swaps")
+        var unrated_swaps = document.getElementById("unrated_swaps")
+        var more_than_5d=document.getElementById("more_than_5d")
+        if (unaccepted_swaps.value > 5 || more_than_5d.value==1 ){
+            document.getElementById("unaccepted_swaps").style.color = "#ff0000"
+            document.getElementById("unaccepted_swaps").style.fontWeight = "bold";
+        }
+        if (unrated_swaps.value > 2){
+            document.getElementById("unrated_swaps").style.color = "#ff0000"
+            document.getElementById("unrated_swaps").style.fontWeight = "bold";
+        }
+   
+    </script>   
+</html>

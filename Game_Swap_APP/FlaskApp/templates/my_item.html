@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> My items</title>
+        <link rel="stylesheet" type="text/css" href="../static/my_item.css">
+    </head>
+    <style>
+        table, th, td {
+          padding:5px;
+          border:2px solid black;
+          border-collapse:collapse;
+          box-shadow:1.1px 1.5px;
+        }
+        th{
+            text-align:left;
+        }
+        </style>
+    <body>
+        <div class = "my_items">
+            <div class = "Item_counts">
+                Item counts
+                <hr style="width:50%", size="2", color=Lightblue>
+                <table  class = "t2" style = "width:30%">
+                    <tr>
+                        <th>Board <br>games</th>
+                        <th>Card <br>games</th>
+                        <th>Computer <br>games</th>
+                        <th>Jigsaw <br>puzzles</th>
+                        <th>Video<br> games</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>   
+                       {% for i in count_result %}
+                       <td>{{ i }}</td> 
+                       {% endfor %}    
+                                 
+                    </tr>
+                </table>
+                <br>
+            </div>
+            <div class = "item_detail">
+                My items
+                <hr style="width:50%", size="2", color=Lightblue>
+                <table class = "t2"style = "width:100%">
+                    <tr>
+                        <th>Item#</th>
+                        <th>Game type</th>
+                        <th>Title</th>
+                        <th>Condition</th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        {%for i in detail %}
+                    <tr>
+                        {% for cell in i %}
+                        <td> {{ cell }}</td> 
+                        {% endfor %}
+                        <td><form action="/view_item" method=post>
+                            <button name ='detail' value="{{i[0]}}">detail</button>
+                            
+                            </form>   
+                        </td>
+                    </tr>
+                        {% endfor %}
+                    </tr>
+                   
+                    
+                </table>
+            </div> 
+        </div>
+    </body>
+    </html>

@@ -1,0 +1,18 @@
+html, body {
+	height: 100%;
+	min-height: 100%;
+} 
+
+hr{
+	margin-left:0;
+}
+.item_detail{
+	table-layout:fixed
+}
+.t2,td{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow:ellipsis;
+	max-width: 100ch;
+	
+}

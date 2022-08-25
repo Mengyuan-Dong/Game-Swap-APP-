@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Welcome to GameSwap</title>
+	<link rel="stylesheet" type="text/css" href="../static/propose_swap.css">
+    <style>
+		table {
+		    border-collapse: collapse;    
+		}
+		td, th {
+		    border: 1px solid #ccc;
+		    padding: 10px;
+		}
+		th:empty {
+		    border: 0;
+		}
+	</style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<script>
+		$(function() {
+			var col, el;
+			
+			$("input[type=radio]").click(function() {
+			   el = $(this);
+			   col = el.data("col");
+			   $("input[data-col=" + col + "]").prop("checked", false);
+			   el.prop("checked", true);
+			}
+            );
+		});
+	</script>
+</head>
+<body>
+    <div class="propose">
+        <h1>Propose Swap</h1>
+        <br>
+        <div class="flash">
+        {% with messages = get_flashed_messages() %}  
+         {% if messages %}  
+               {% for message in messages %}  
+                    <p>{{ message }}</p>  
+               {% endfor %}  
+         {% endif %}  
+      {% endwith %}  
+    </div>
+        <br>
+        <input  name="distance" value="The other user is {{distance}} miles away!" id="distance" style="display: none;"/>
+        <h2>You are proposing a trade for </h2>
+        <br>
+        <h2>{{info}}</h2>
+        <br>
+        <br>
+        <br>
+        Please choose your proposed item:
+        <br>
+		<table>
+            <thead>
+                <tr>
+                <th>Item#</th>
+                <th>Game Type</th>
+                <th>Title</th>
+                <th>Condition</th>
+                <th> </th>
+                <th></th>
+                </tr>
+            </thead>
+            <form name="select_item" action="/propose_swap" method=post onsubmit="return validateForm()" required>
+            {%for i in range(0,len)%}
+            <tr>
+                <td>{{r[i][0]}}</td>
+                <td>{{r[i][1]}}</td>
+                <td>{{r[i][2]}}</td>
+                <td>{{r[i][3]}}</td>
+                <td>
+                    <input type="radio" id ='select' name="select" data-col="1" value="{{r[i][0]}}"> Select
+                </td>
+            </tr>
+            {%endfor%}
+            <input type="submit" value="Confirm"  >
+            </form>
+        <h3 >{{swap}}</h3>
+	</div>
+    
+</body>
+<script type='text/javascript'>  
+            function validateForm(){
+                // alert (document.forms["select_item"]["select"].value)
+                // alert (document.querySelector("select").value)
+                // the following code returns the not selected item number if there is only one item in the table
+                // if(document.forms["select_item"]["select"].value=="") {
+                //     alert ("You have not selected any item");
+                //     return false; 
+                // } 
+                var selected = document.getElementsByName("select");
+                var result = false
+                for (var i=0; i<selected.length;i++){
+                    // alert (selected[i].value+"values is "+selected[i].checked);
+                    if (selected[i].checked){
+                        result = true;
+                    }
+                // alert (result);
+                }
+                if (!result) {
+                    // alert ("You have not selected any item");
+                }
+                return result
+                }
+            var distance = document.getElementsByClassName("distance");
+            if (distance.value > 100){
+            distance.style['background-color']="red";
+            distance.style.display = "";
+            };
+            
+        </script>   
+</html>

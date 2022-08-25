@@ -1,0 +1,47 @@
+<style>
+ 
+    body{
+    background-color: white;
+    text-align: center;
+}
+.column {
+	left : 500px;
+    top: 200px;
+	
+    position: absolute;
+    background-color: #fff;
+	padding: 50px 50px 150px 300px;
+	border: 1px solid #D3D3D3;
+	
+	box-shadow: 2px 2px 1px #D3D3D3;
+}
+.bn input[type="submit"]{
+    left : 600px;
+    top: 350px;
+    margin: 10px 50px 10px 50px;
+	padding: 5px 20px 5px 20px;
+    background-color: lightblue;
+    color:white;
+	font-size: 100%;
+    position: absolute;
+}
+
+</style>
+<body>
+    
+
+<div class="column">
+    <span class="popuptext" id="myPopup" style="  position: absolute;top:50px ;left:80px;" font size="+3">You cannot list an item</span><br>
+    {%if unr%}
+    <span class="popuptext" id="myPopup" style="  position: absolute;top:80px ;left:80px;" font size="+3">You have {{unr}} unrated swaps</span>
+    {% endif %}
+    {%if una%}
+    <span class="popuptext" id="myPopup" style="  position: absolute;top:80px ;left:80px;" font size="+3">You have {{una}} unaccepted swaps</span>
+    {% endif %}
+  </div>
+
+<div class="bn">
+<a href="http://127.0.0.1:5000/main_menu"> 
+    <input class="right" type="submit" name="list_item_button" value="OK"> </a>
+</div>
+</body>

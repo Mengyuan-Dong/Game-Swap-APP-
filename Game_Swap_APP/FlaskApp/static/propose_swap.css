@@ -1,0 +1,107 @@
+
+html, body {
+	height: 100%;
+	min-height: 100%;
+} 
+
+form {
+	text-align: center;
+}
+
+body{
+	margin: 5px;
+	padding: 5px;
+}
+
+.propose {
+	width: 100%;
+	height: 90px;
+	/* background-color: #0eb9f1; */
+	color: #084d7a;
+	text-align: center;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+.propose h1 {
+	margin-top: 0;
+	margin-bottom: 0;
+	color: #084d7a;
+	font-size: 250%;
+}
+.propose h2 {
+	margin-top: 0;
+	margin-bottom: 0;
+	color: #084d7a;
+	font-size: 100%;
+}
+.propose h3 {
+	margin-top: 0;
+	margin-bottom: 0;
+	color: red;
+	font-size: 150%;
+}
+
+input[type="submit"] {
+	background-color: #0eb9f1;
+	border: 10px solid #0eb9f1;
+	border-radius: 8px;
+	margin: 10px 0 10px 0;
+	padding: 5px 20px 5px 20px;
+	color: #fcfdfd;
+	font-size: 100%;
+    left: 200px;
+    top: -75px;
+    position: relative;
+	
+}
+
+.propose_confirm input[type="submit"] {
+	background-color: #0eb9f1;
+	border: 10px solid #0eb9f1;
+	border-radius: 8px;
+	margin: 10px 0 10px 0;
+	padding: 5px 20px 5px 20px;
+	color: #fcfdfd;
+	font-size: 100%;
+    left: 10px;
+    top: 100px;
+    position: relative;
+}
+
+.propose table {
+    left: 600px;
+	margin-top: 10px;
+	margin-bottom: 0;
+	color: #084d7a;
+	font-size: 100%;
+    position: relative;
+}
+
+  .flash {
+    background-color: rgb(248, 66, 66);
+    color: #f7f7f4;
+    font-size: 150%;
+    text-align: center;
+    /* border: 10px solid rgb(248, 66, 66);
+	border-radius: 8px;
+	margin: 10px 0 10px 0;
+	padding: 5px 20px 5px 20px; */
+    /* width: 40%;
+    left: 450px;
+    position: relative; */
+
+  }
+/* input[type="text"], input[type="email"], input[type="password"] {
+	border: 1px solid #e5e5e5;
+	margin-top: 5px;
+	width: 70%;
+	height: 30px;
+	margin-bottom: 5px;
+	padding-left: 5px;
+} */
+/* 
+input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hover {
+	border-color: #033d2a;
+} */
+

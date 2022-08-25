@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Rate Swaps</title>
+        <link rel="stylesheet" type="text/css" href="../static/rate_swap.css">
+    </head>
+    <style>
+        table, th, td {
+          padding:5px;
+          border:2px solid black;
+          border-collapse:collapse;
+          box-shadow:1.1px 1.5px;
+        }
+        th{
+            text-align:left;
+        }
+        </style>
+    <body>
+        <div class = "total">
+            <div class = "rate_swap">
+            Rate Swaps
+                <hr style="width:50%", size="2", color=Lightblue>
+                <table  class = "t2" style = "width:80%">
+                    <tr>
+                        <th>Acceptance<br>Date</th>
+                        <th>My role</th>
+                        <th>Proposed Item</th>
+                        <th>Desired Item</th>
+                        <th>Other User</th>
+                        <th>Rating</th>
+                    </tr>
+                    <tr>   
+                        {%for row in rate_detail %}
+                    <tr>
+                        {% for i in range(1,6) %}
+                        <td> {{ row[i] }}</td>
+                        {% endfor %}
+                        <td >
+                            <form name="rate" method = post id = "rate_form" action = "/rate_swap">
+                                <div class="dropdown">
+                                    <div class="dropdown-menu" >
+                                        <select id ={{row[0]}} name="rate" onchange = "vali()" >
+                                            <option style="display: none";></option>
+                                            <option value = 0>0</option>
+                                            <option value = 1>1</option>
+                                            <option value = 2>2</option>
+                                            <option value = 3>3</option>
+                                            <option value = 4>4</option>
+                                            <option value = 5>5</option>
+                                        </select>    
+                                        <input id="rated_dealID" name='rated_dealID' type="hidden"/>
+                                        <input id="rated_dealID_rating" name="rated_dealID_rating" type="hidden"/> 
+                                    </div>
+                                 
+                                </div>
+                        </td>
+                    </tr>
+                        {% endfor %}
+                    </tr>
+              
+                </form>
+                </table>
+            </div>
+            <a href="http://127.0.0.1:5000/main_menu"> 
+                <input type="submit" name="return_to_main_menu" value="Main Menu" id="Return"/></a>
+        </div>
+            </div>
+        </div>
+        <script type='text/javascript'>
+            function get_detail_dealID(){
+                
+            }
+            function vali() {
+                // alert("rate!")
+                var dealID = document.getElementsByName("rate");
+                var input = document.getElementById("rated_dealID");
+                var rated_dealID_rating=document.getElementById("rated_dealID_rating");
+                for (var i=0; i<=dealID.length;i++){
+                    if (dealID[i].value !=0){   
+                        input.value =dealID[i].id; 
+                        rated_dealID_rating.value= dealID[i].value;   
+                        // alert ("rating is "+rated_dealID_rating.value+" id is "+input.value);
+                        document.forms["rate"].submit();
+                        // alert("submit!")
+                    }
+                }
+                
+            }
+        </script> 
+    </body>
+</html>
+

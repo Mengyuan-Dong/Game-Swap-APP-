@@ -1,0 +1,1 @@
+The file named sql_query.py contains the SQL implemented by our project.

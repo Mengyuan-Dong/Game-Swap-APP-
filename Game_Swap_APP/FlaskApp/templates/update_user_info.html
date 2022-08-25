@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> -->
+
+    <title>Update User Information</title>
+    <link rel="stylesheet" type="text/css" href="../static/registration_style.css">
+        
+</head>
+
+
+<body>
+    <h1>Update my information</h1>  
+    <br>
+<form action="/update_user_info" method="POST">
+        Email <input type="text" name="inputemail" value="{{email}}" readonly/>
+        Nickname <input type="text" name="inputnickname" value="{{nickname}}" /><br />
+        Password <input type="password" name="inputpassword" value="{{password}}"/>      
+        City <input type="text" name="inputcity" value="{{city}}" /><br />
+        First Name <input type="text" name="inputfirstname" value="{{firstname}}" />
+        State <input type="text" name="inputstate" value="{{state}}" /><br />
+        Last Name <input type="text" name="inputlastname" value="{{lastname}}" />
+        Postal Code <input type="text" name="inputpostalcode" value="{{postalcode}}" /><br />
+
+        Phone number (optional) <input type="text" name="inputphonenumber" value="{{phonenumber}}" /> 
+        <select name="inputphonetype" value="{{phonetype}}">
+            <option>Home</option>
+            <option>Work</option>
+            <option>Mobile</option>
+        </select>
+        <br />
+
+        <input type="checkbox" name="inputisshareable" value="1" />Show phone number in swaps<br />
+        <input type="submit" value="Update" /><br />
+        
+    </form>
+    <div class="menu">
+    <a href="http://127.0.0.1:5000/main_menu"> 
+            <input type="submit" name="return_to_main_menu" value="Main Menu" id="Return"/></a>
+        </div>
+    <br>
+    <h3 >{{info}}</h3>
+    
+
+</body>
+
+
+</html>

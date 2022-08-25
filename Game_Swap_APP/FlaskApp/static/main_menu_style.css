@@ -1,0 +1,107 @@
+html, body {
+	height: 100%;
+	min-height: 100%;
+} 
+
+form {
+	text-align: center;
+}
+
+.user_welcome_message
+{
+	top: 0px; 
+    left: 500px;
+	margin-top: 20px; 
+	margin-bottom: 0;
+	color: #000502;
+	font-size: 125%;
+	position: absolute;
+
+
+}
+
+.right input[type="submit"] {
+    left:850px;
+    top : 175px;
+    text-align: center;
+	background-color: #0eb9f1;
+	border: 10px solid #0eb9f1;
+	border-radius: 8px;
+	margin: 10px 50px 10px 50px;
+	padding: 5px 20px 5px 20px;
+	color: #fcfdfd;
+	font-size: 100%;
+    position: relative;
+}
+
+.left input[type="submit"] {
+    left : -50px;
+    top: -20px;
+    background-color: #ffffff;
+	text-decoration: underline;
+	border: 1px solid #00080a;
+	border-radius: 8px;
+	margin: -30px 20px 30px 50px;
+	padding: 15px 50px 15px 50px;
+	
+	font-size: 100%;
+    position: relative;
+}
+
+.left input[type="text"] {
+    left : -50px;
+    top: -20px;
+	width: 45%;
+	text-align: center;
+    background-color: #ffffff;
+	border: 1px solid #00080a;
+	border-radius: 8px;
+	margin: -30px 20px 30px 50px;
+	padding: 15px 50px 15px 50px;
+	color: #000c0c;
+	font-size: 100%;
+    position: relative;
+}
+.column {
+	left : 500px;
+    top: 200px;
+	
+    position: absolute;
+    background-color: #fff;
+	padding: 10px;
+	border: 1px solid #D3D3D3;
+	border-radius: 5px;
+	box-shadow: 2px 2px 1px #D3D3D3;
+}
+
+.left h2 {
+    left : -50px;
+    top: -20px;
+    background-color: #0eb9f1;
+	border: 3px solid #0eb9f1;
+	border-radius: 8px;
+	margin: 10px 50px 10px 50px;
+	padding: 5px 20px 5px 20px;
+	color: #fcfdfd;
+	font-size: 100%;
+    position: relative;
+}
+
+.logout input[type="submit"]{
+	left : 850px;
+    top: -300px;
+	text-align: center;
+	background-color: #0eb9f1;
+	border: 6px solid #0eb9f1;
+	border-radius: 6px;
+	margin: 10px 50px 10px 50px;
+	padding: 5px 20px 5px 20px;
+	color: #fcfdfd;
+	font-size: 75%;
+	position: relative;
+}
+
+
+.left input[type="submit"]:hover {
+	border-color: #0eb9f1;
+}

@@ -1,0 +1,159 @@
+<html>
+<body>
+    <head>
+        <title>Accept/reject Swaps</title>
+        <link rel="stylesheet" type="text/css" href="../static/accept_reject_swaps.css">
+    </head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <div class="Accept/Reject Swaps">
+        <h1>Accept/reject swaps</h1>
+            <br>
+    </div>
+
+        <div class="swap_acceptance_table">
+            <table border="1" width="500px" style="border-collapse:collapse";>
+                <thead>
+                   <tr>
+                        <th>Date</th>
+                        <th>Desired Item</th>
+                        <th>Proposer</th>
+                        <th>Rating</th>
+                        <th>Distance</th>
+                        <th>Proposed Item</th>
+                        <th>       </th>
+                    </tr> 
+                </thead>
+                    
+                <tbody>
+
+                    {%for i in range(0,len)%}
+                    <tr>                    
+                        <td>{{r[i][0]}}</td>
+                        <td> 
+                            <form action="/view_item" method=post>
+                                <input name ='detail' value="{{r[i][12]}}" type="hidden">
+                                <button type="submit" class="link-button">{{r[i][1]}}</button>
+                        </form>
+                        </td>
+                        <td>{{r[i][2]}}</td>
+                        <td>{{r[i][3]}}</td>
+                        <td>{{r[i][4]}} miles</td>
+                        <td> 
+                            <form action="/view_item" method=post>
+                                <input name ='detail' value="{{r[i][13]}}" type="hidden">
+                                <button type="submit" class="link-button">{{r[i][5]}}</button>
+                        </form>
+                        </td>
+                        <td>
+                            <input type="submit" id="accept_button_{{i}}" value="Accept" onclick="get_accepted_dealID('{{i}}','{{r[i][10]}}')"/><br />
+                            <input type="submit" id="reject_button_{{i}}" value="Reject" onclick="get_rejected_dealID('{{r[i][10]}}')"/><br />
+                            <input id="isshareable_{{i}}" value="{{r[i][9]}}" type = "hidden">
+                            <input id='dealID' name='dealID' type="hidden"/>
+                        	<!-- <input id='status' name='status' type="hidden"/> -->
+                        </td>
+                    </tr>
+                    {%endfor%}
+
+                </tbody>
+            </table>
+        <div class="return_to_main_meun">
+            <button onclick="window.location.href='main_menu'">Main Menu</button>
+        </div><br />    
+        </div>
+    <!-- Modal Section -->
+
+    {%for i in range(0,len)%}
+    <div class="bg-modal" id="bg-modal-{{i}}" name ="bg-modal-{{i}}" style="display: none;">
+      <div class="modal-content">
+        <table>
+            <tr>
+                
+                <th>Swap Accepted!</th>
+            </tr>
+            <tr>
+                <td>Contact proposer to swap items!<br/>
+                    <br/>
+                    <div id="email-address-{{i}}">Email: {{r[i][6]}}</div> <br/>
+                    Name:  {{r[i][7]}}<br/>
+                    
+                    <div id="phone-number-{{i}}" style="display: none;">{{r[i][8]}}</div><br/> 
+                    <div id="modal_phone_{{i}}"> </div>
+                    <div class="close" id="close_button_{{i}}">
+                        <button type="button">OK</button>
+                    </div><br />
+                </td>
+            </tr>
+        </table>
+      </div>  
+    </div>      
+    {%endfor%}
+
+    <script>
+        // let elementList = document.querySelectorAll('*[id^="accept_button"]');
+        // elementList.forEach((el, index) => {
+        //     el.addEventListener('click', function(){
+        //     $.post("/accept_request", {"index": index})
+        //     document.getElementById('bg-modal-' + index).style.display = 'flex'
+            
+        //     let is_shareable=document.getElementById("isshareable_" + index).value;
+        //     let phone_number = document.getElementById("phone-number-" + index).innerText;
+        //     if(is_shareable=="1"){
+        //         document.getElementById('modal_phone_' + index).innerHTML='Phone number: ' + phone_number;
+        //     }
+        //     else if(is_shareable=="0"){
+        //         document.getElementById('modal_phone_' + index).innerHTML='No phone number available';
+        //     }
+        //     })
+        // })
+        // let closeButtonList = document.querySelectorAll('*[id^="close_button"]');
+        // closeButtonList.forEach((el, index) => {
+        //     el.addEventListener('click', function(){
+        //     document.getElementById('bg-modal-' + index).style.display = 'none'
+        //     })
+        // })
+        // let elementList2 = document.querySelectorAll('*[id^="reject_button"]');
+        // elementList2.forEach((el, index) => {
+        //     el.addEventListener('click', function(){
+        //     $.post("/reject_request", {"index": index})
+        //     })
+        // })
+        
+        function get_accepted_dealID(i,r){
+            
+            var dealID = document.getElementById("dealID");
+            dealID.value =r;
+            // alert ("dealID "+dealID.value+" is accepted");
+            // status.value= 1;
+            // document.getElementById('bg-modal-' + i).style.display = 'None'
+            let is_shareable=document.getElementById("isshareable_" + i).value;
+            let phone_number = document.getElementById("phone-number-" + i).innerText;
+            if(is_shareable=="1"){
+                document.getElementById('modal_phone_' + i).innerHTML='Phone number: ' + phone_number;
+            }
+            else {
+                document.getElementById('modal_phone_' + i).innerHTML='No phone number available';
+            }
+            document.getElementById('bg-modal-' + i).style.display = 'flex'
+            // alert ("here")
+            let closeButtonList = document.querySelectorAll('*[id^="close_button"]');
+            closeButtonList.forEach((el, i) => {
+                el.addEventListener('click', function(){
+                document.getElementById('bg-modal-' + i).style.display = 'none'
+                })
+            })
+            $.post("/accept_request", {"dealID": dealID.value})  
+        }
+        function get_rejected_dealID(r){
+            var dealID = document.getElementById("dealID");
+            dealID.value =r
+            // alert ("dealID "+dealID.value+" is rejected");
+            $.post("/reject_request", {"dealID": dealID.value}) 
+        }
+        
+
+
+    </script>
+
+</body>
+</html>
